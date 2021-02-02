@@ -31,27 +31,35 @@ class Aventure:
         # create a window in GUI
         self.w1 = sg.Window('Adventure Game').layout(layout)
 
-        self.data()
-        if self.event=='Start':
-            print(self.q1)
+        while True:
+            
+            #obtain data
             self.data()
-            if self.event=='Play':
+            if self.event== sg.WINDOW_CLOSED:
+                break
+            
+            #start program
+            if self.event=='Start':
+                print(self.q1)
                 self.data()
-                if self.value=='North' or self.value=='north':
+
+                #adventure selection and respetive end
+                if self.value['answer']=='North' or self.value['answer']=='north':
+                    print(self.q2)
                     self.data()
-                    if self.event == 'Play':
-                        self.data()
-                        if self.value == 'Sword' or self.value == 'sword':
-                            print(self.end1)
-                        elif self.value == 'Shield' or self.value == 'shield':
-                            print(self.end2)
-                        else:
-                            print('This option is not valid.')
-                elif self.value=='South' or self.value=='south':
+
+                    if self.value['answer'] == 'Sword' or self.value['answer'] == 'sword':
+                        print(self.end1)
+                    elif self.value['answer'] == 'Shield' or self.value['answer'] == 'shield':
+                        print(self.end2)
+                    else:
+                        print('This option is not valid.')
+                if self.value['answer']=='South' or self.value['answer']=='south':
+                    print(self.q3)
                     self.data()
-                    if self.value == 'Combat' or self.value == 'combat':
+                    if self.value['answer'] == 'Combat' or self.value['answer'] == 'combat':
                         print(self.end3)
-                    elif self.value== 'Tactic' or self.value== 'tactic':
+                    elif self.value['answer']== 'Tactic' or self.value['answer']== 'tactic':
                         print(self.end4)
                     else:
                         print('This option is not valid.')
